@@ -1,0 +1,328 @@
+basePath: /
+definitions:
+  models.Entry:
+    properties:
+      id:
+        type: integer
+      text:
+        type: string
+    type: object
+  models.Journal:
+    properties:
+      entryID:
+        type: integer
+      userID:
+        type: integer
+    type: object
+  models.User:
+    properties:
+      birthday:
+        type: string
+      id:
+        type: integer
+      name:
+        type: string
+      phoneNumber:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: This is a sample server for a journal application.
+  title: JournalAPI Documentation
+  version: "1.0"
+paths:
+  /entries:
+    get:
+      consumes:
+      - application/json
+      description: get all entries
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Entry'
+            type: array
+      summary: Get all entries
+      tags:
+      - entries
+    post:
+      consumes:
+      - application/json
+      description: add by json entry
+      parameters:
+      - description: Add Entry
+        in: body
+        name: entry
+        required: true
+        schema:
+          $ref: '#/definitions/models.Entry'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Entry'
+      summary: Add a new entry
+      tags:
+      - entries
+  /entries/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete an entry by ID
+      parameters:
+      - description: Entry ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete an entry
+      tags:
+      - entries
+    get:
+      consumes:
+      - application/json
+      description: get an entry by ID
+      parameters:
+      - description: Entry ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Entry'
+      summary: Get an entry
+      tags:
+      - entries
+    put:
+      consumes:
+      - application/json
+      description: update entry's details by ID
+      parameters:
+      - description: Entry ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update Entry
+        in: body
+        name: entry
+        required: true
+        schema:
+          $ref: '#/definitions/models.Entry'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Entry'
+      summary: Update an entry
+      tags:
+      - entries
+  /journals:
+    get:
+      consumes:
+      - application/json
+      description: get all journal entries
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.Journal'
+            type: array
+      summary: Get all journal entries
+      tags:
+      - journals
+    post:
+      consumes:
+      - application/json
+      description: add by json journal
+      parameters:
+      - description: Add Journal Entry
+        in: body
+        name: journal
+        required: true
+        schema:
+          $ref: '#/definitions/models.Journal'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Journal'
+      summary: Add a new journal entry
+      tags:
+      - journals
+  /journals/{userid}/{entryid}:
+    delete:
+      consumes:
+      - application/json
+      description: delete a journal entry by UserID and EntryID
+      parameters:
+      - description: User ID
+        in: path
+        name: userid
+        required: true
+        type: integer
+      - description: Entry ID
+        in: path
+        name: entryid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a journal entry
+      tags:
+      - journals
+    get:
+      consumes:
+      - application/json
+      description: get a journal entry by UserID and EntryID
+      parameters:
+      - description: User ID
+        in: path
+        name: userid
+        required: true
+        type: integer
+      - description: Entry ID
+        in: path
+        name: entryid
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.Journal'
+      summary: Get a journal entry
+      tags:
+      - journals
+  /users:
+    get:
+      consumes:
+      - application/json
+      description: get all users
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/models.User'
+            type: array
+      summary: Get all users
+      tags:
+      - users
+    post:
+      consumes:
+      - application/json
+      description: add by json user
+      parameters:
+      - description: Add User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Add a new user
+      tags:
+      - users
+  /users/{id}:
+    delete:
+      consumes:
+      - application/json
+      description: delete a user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "204":
+          description: No Content
+      summary: Delete a user
+      tags:
+      - users
+    get:
+      consumes:
+      - application/json
+      description: get a user by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Get a user
+      tags:
+      - users
+    put:
+      consumes:
+      - application/json
+      description: update user's details by ID
+      parameters:
+      - description: User ID
+        in: path
+        name: id
+        required: true
+        type: integer
+      - description: Update User
+        in: body
+        name: user
+        required: true
+        schema:
+          $ref: '#/definitions/models.User'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/models.User'
+      summary: Update a user
+      tags:
+      - users
+swagger: "2.0"

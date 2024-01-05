@@ -28,6 +28,7 @@ docker-compose up --build
 ## Usage
 Access the API through
 - `http://localhost:8080/api/`
+  
 Swagger documentation can be found at
 - `http://localhost:8080/swagger/index.html`
 

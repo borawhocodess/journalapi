@@ -10,3 +10,39 @@ JournalAPI is a RESTful API developed in Go, designed for managing journal entri
 - PostgreSQL database integration.
 
 
+## Prerequisites
+- [Docker](https://www.docker.com)
+- [Docker Compose](https://docs.docker.com/compose/install/)
+
+
+## How 2 Run
+**Clone the Repository**:
+```bash
+git clone https://github.com/borawhocodess/journalapi.git
+```
+**Start the Application**:  Navigate to the project directory and run:
+```bash
+docker-compose up --build
+```
+
+## Usage
+Access the API through
+- `http://localhost:8080/api/`
+Swagger documentation can be found at
+- `http://localhost:8080/swagger/index.html`
+
+
+## Code Structure
+- `main.go`: Application entry point.
+- `/models`: Contains the User, Entry, and Journal models.
+- `/database`: Database configuration and initialization.
+- `/handlers`: Handler functions for API endpoints.
+
+
+## How 2 Stop
+**Stop the Application**:  Navigate to the project directory and run:
+```bash
+docker-compose down
+```
+
+
